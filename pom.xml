@@ -12,16 +12,49 @@
   <artifactId>additioner</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
+  <profiles>
+    <profile>
+      <id>client</id>
+      <properties>
+        <exec.executable>java</exec.executable>
+        <exec.mainClass>io.github.oliviercailloux.javagrade.graders.Client</exec.mainClass>
+      </properties>
+      <build>
+        <directory>/tmp/${project.artifactId}/target/</directory>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.3.0</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <arguments>
+                <argument>-classpath</argument>
+                <classpath />
+                <argument>${exec.mainClass}</argument>
+              </arguments>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <dependencies>
     <dependency>
       <groupId>io.github.oliviercailloux</groupId>
-      <artifactId>jaris</artifactId>
-      <version>0.0.34</version>
+      <artifactId>congrad</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>io.github.oliviercailloux</groupId>
-      <artifactId>jgradlib</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
     </dependency>
 
     <dependency>

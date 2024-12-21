@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://ch.qos.logback/xml/ns/logback"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ch.qos.logback/xml/ns/logback https://raw.githubusercontent.com/enricopulatzo/logback-XSD/master/src/main/xsd/logback.xsd">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+	</appender>
+
+	<appender name="File" class="ch.qos.logback.core.FileAppender">
+		<file>out.log</file>
+		<append>false</append>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.jcabi.http.request.BaseRequest" level="WARN" />
+	<logger name="io.github.oliviercailloux.grade.format.json.JsonGrade" level="INFO" />
+	<logger name="io.github.oliviercailloux.git.fs" level="INFO" />
+	<logger name="io.github.oliviercailloux.grade.Grade" level="INFO" />
+	<logger name="io.github.oliviercailloux.grade.GradeAggregator" level="INFO" />
+	<logger name="org.eclipse.jgit" level="INFO" />
+	<logger name="org.apache.sshd" level="INFO" />
+	<logger name="io.github.oliviercailloux.git.git_hub.services.GitHubFetcherQL" level="INFO" />
+	<logger name="io.github.oliviercailloux.git.git_hub.services.GitHubFetcherV3" level="INFO" />
+	<logger name="io.github.oliviercailloux.git.git_hub.model.graph_ql.PushedDatesAnswer" level="INFO" />
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="File" />
+	</root>
+</configuration>
